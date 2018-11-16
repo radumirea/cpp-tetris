@@ -6,6 +6,7 @@
 #include <QtWidgets>
 #include "Display.h"
 #include "Boardgame.h"
+#include "ScoresGui.h"
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
@@ -20,6 +21,8 @@ private:
 	bool gameStateRunning = false;
 
 	Boardgame & board;
+
+	Service& scoreServ;
 
 	//graphics components
 	QGraphicsView *v;
@@ -51,7 +54,7 @@ private:
 	void drawPile(std::vector<QColor> color);
 
 public:
-	Gui(Boardgame & board) : board{ board } {
+	Gui(Boardgame & board, Service& scoreServ) : board{ board }, scoreServ{ scoreServ } {
 		initComp();
 		initSlots();
 	};

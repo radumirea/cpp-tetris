@@ -19,6 +19,8 @@ void Boardgame::nextPiece()
 	/*piece = pieceFactory.randPiece(width/2-1,0);
 	piece.setY(piece.getShape().size()*(-1));*/
 
+	landed();
+
 	notify();
 
 }
@@ -43,7 +45,10 @@ bool Boardgame::landed()
 		pile.addPiece(piece);
 		int l = pile.checkRows();
 		lines += l;
-		score += l * level;
+		score += l * level * 100;
+		if (l >= 4)
+			score += l * level * 100;
+		level = lines / 8+1;
 		nextPiece();
 		notify();
 		return true;
@@ -64,7 +69,7 @@ bool Boardgame::checkLanded() const
 
 	for (int i = 0; i < s.size(); i++)
 		for (int j = 0; j < s[0].size(); j++)
-			if (((y + i + 1) >= height && s[i][j] > 0) || (y + i + 1 >= 0 && x + j >= 0 && s[i][j] > 0 && p[y + i + 1][x + j] > 0))
+			if (((y + i + 1) >= height && s[i][j] > 0) || (y + i +1 >= 0 && x + j >= 0 && s[i][j] > 0 && p[y + i + 1][x + j] > 0))
 				return true;
 
 	return false;

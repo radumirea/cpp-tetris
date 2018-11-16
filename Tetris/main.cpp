@@ -7,12 +7,14 @@ int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
 	//Tetris w;
-	qDebug("aaa");
 	Tests t{};
 	//t.run();
 
+	RepoFile repo{ "scores.txt" };
+	Service scoreServ{ repo };
+
 	Boardgame b{10,16};
-	Gui g{ b };
+	Gui g{ b ,scoreServ};
 	g.show();
 
 	//w.show();

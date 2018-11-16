@@ -86,6 +86,8 @@ void Gui::tick() {
 		endGame();
 	}
 
+	timer->setInterval(850 - board.getLevel()*150);
+
 	drawBoard();
 	
 }
@@ -102,8 +104,11 @@ void Gui::startGame()
 void Gui::endGame()
 {
 	gameStateRunning = false;
-	qDebug("aaa");
 	timer->stop();
+
+	ScoreInputGui *inputGui = new ScoreInputGui(scoreServ, board);
+	//inputGui
+	inputGui->show();
 
 }
 
