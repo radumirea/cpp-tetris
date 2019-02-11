@@ -14,8 +14,6 @@ use arrow keys to move and rotate the piece
 
 ![alt text](https://raw.githubusercontent.com/MireaRadu/Cpp-Tetris/master/Screenshots/Capture.PNG)
 
-![alt text](https://raw.githubusercontent.com/MireaRadu/Cpp-Tetris/master/Screenshots/Capture2.PNG)
-
 ![alt text](https://raw.githubusercontent.com/MireaRadu/Cpp-Tetris/master/Screenshots/Capture3.PNG)
 
 ![alt text](https://raw.githubusercontent.com/MireaRadu/Cpp-Tetris/master/Screenshots/Capture4.PNG)
