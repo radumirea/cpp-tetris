@@ -1,3 +1,0 @@
-Tetris.h|"C:\Users\Radu\Desktop\Git\Cpp-Tetris\Tetris\Tetris.h" -o ".\GeneratedFiles\Debug\moc_Tetris.cpp" "-I.\GeneratedFiles" "-I." "-ID:\PR\Qt\5.10.1\msvc2017_64\include" "-I.\GeneratedFiles\Debug" "-ID:\PR\Qt\5.10.1\msvc2017_64\include\QtCore" "-ID:\PR\Qt\5.10.1\msvc2017_64\include\QtGui" "-ID:\PR\Qt\5.10.1\msvc2017_64\include\QtANGLE" "-ID:\PR\Qt\5.10.1\msvc2017_64\include\QtWidgets" -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
-Tetris.qrc|"C:\Users\Radu\Desktop\Git\Cpp-Tetris\Tetris\Tetris.qrc" -o ".\GeneratedFiles\qrc_Tetris.cpp" --name Tetris
-Tetris.ui|"C:\Users\Radu\Desktop\Git\Cpp-Tetris\Tetris\Tetris.ui" -o ".\GeneratedFiles\ui_Tetris.h"
