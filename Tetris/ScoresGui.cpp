@@ -7,6 +7,8 @@
 void ScoresGui::initComp() {
 	setWindowModality(Qt::ApplicationModal);
 	table = new QTableWidget();
+	vb = new QVBoxLayout();
+	this->setLayout(vb);
 	table->setColumnCount(2);
 	table->setRowCount(10);
 	table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -68,23 +70,23 @@ void ScoreInputGui::connectSlots() {
 
 void ScoreInputGui::addScore() {
 	if (txtName->text().toStdString() != "") {
-    	serv.saveScore(txtName->text().toStdString(), boardgame.getScore());
+		serv.saveScore(txtName->text().toStdString(), boardgame.getScore());
     
-    	std::string nameStr = txtName->text().toStdString();
+		std::string nameStr = txtName->text().toStdString();
 		std::string scoreStr = std::to_string(boardgame.getScore());
 		std::string payload = "tetris|" + nameStr + "|" + scoreStr;
 		std::string payloadEnc = encrypt(payload);
 
 		emscripten_fetch_attr_t attr;
-  		emscripten_fetch_attr_init(&attr);
-  		strcpy(attr.requestMethod, "POST");
-  		attr.attributes = EMSCRIPTEN_FETCH_LOAD_TO_MEMORY;
+		emscripten_fetch_attr_init(&attr);
+		strcpy(attr.requestMethod, "POST");
+		attr.attributes = EMSCRIPTEN_FETCH_LOAD_TO_MEMORY;
 
 		std::vector<BYTE> myData;
 		std::copy(payloadEnc.begin(), payloadEnc.end(), std::back_inserter(myData));
 		std::string encodedData = base64_encode(&myData[0], myData.size());
 
-  		emscripten_fetch(&attr, ("api/projects/scores?payload=" + encodedData).c_str());
+		emscripten_fetch(&attr, ("api/projects/scores?payload=" + encodedData).c_str());
 		//ScoresGui *scores = new ScoresGui(serv);
 		//scores->show();
 
