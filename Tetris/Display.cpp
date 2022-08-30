@@ -2,19 +2,17 @@
 
 void Display::initComp()
 {
-
 	vb = new QVBoxLayout();
 	this->setLayout(vb);
 
-	lblScore = new QLabel("Score: 0");
+	lblScore = new QLabel("Score:\n0");
 	lblNextPiece = new QLabel("Next Piece");
-	lblLevel = new QLabel("Level: 1");
-	lblLines = new QLabel("Lines: 0");
-
-	QFont  f;
+	lblLevel = new QLabel("Level:\n1");
+	lblLines = new QLabel("Lines:\n0");
+    QFont  f;
 	f.setPixelSize(20);
 
-	QFont font("Blacklight");
+    QFont font("Helvetica");
 	font.setStyleHint(QFont::Fantasy);
 	Display::setFont(font);
 
@@ -33,51 +31,34 @@ void Display::initComp()
 	v->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	v->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	v->setStyleSheet("border: 0px");
-	//v->setSceneRect(0, 0, 70, 70);
 
 	vb->addWidget(v);
-
 	vb->addWidget(lblLevel);
 	vb->addWidget(lblLines);
-
 }
 
-void Display::update()
-{
+void Display::update() {
 
-	{
+	lblScore->setText("Score:\n" + QString::number(board.getScore()));
+	lblLevel->setText("Level:\n" + QString::number(board.getLevel()));
+	lblLines->setText("Lines:\n" + QString::number(board.getLines()));
+	scene->clear();
 
-		//updates labels
-		lblScore->setText("Score: " + QString::number(board.getScore()));
-		lblLevel->setText("Level: " + QString::number(board.getLevel()));
-		lblLines->setText("Lines: " + QString::number(board.getLines()));
-
-		scene->clear();
-
-		Piece p = board.getFollowingPiece();
-		auto shape = p.getShape();
-
-		std::vector<QColor> color{ "#96251E","#40226B","#348229","#FFDB51","#1A259C" };
-
-		//adjusts view for the following piece
-		int scale = v->height() / shape.size();
-		v->fitInView(0, 0, 70, 70, Qt::KeepAspectRatio);
-
-		//draws the following piece
-		for (int i = 0; i < shape.size(); i++)
-			for (int j = 0; j < shape[i].size(); j++)
-				if (shape[i][j] > 0) {
-					QGraphicsRectItem *r = new QGraphicsRectItem();
-					r->setRect(j* scale, i* scale, scale, scale);
-					r->setBrush(color[shape[i][j] - 1]);
-					scene->addItem(r);
-
-				}
-
-	}
-
+	Piece p = board.getFollowingPiece();
+	auto shape = p.getShape();
+	//adjusts view for the following piece
+	int scale = v->height() / shape.size();
+	v->fitInView(0, 0, 70, 70, Qt::KeepAspectRatio);
+	//draws the following piece
+	for (int i = 0; i < shape.size(); i++)
+		for (int j = 0; j < shape[i].size(); j++)
+			if (shape[i][j] > 0) {
+				QGraphicsRectItem *r = new QGraphicsRectItem();
+				r->setRect(j* scale, i* scale, scale, scale);
+				r->setBrush(colors[shape[i][j] - 1]);
+				scene->addItem(r);
+		}
 }
 
-Display::~Display()
-{
+Display::~Display() {
 }

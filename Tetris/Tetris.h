@@ -3,8 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_Tetris.h"
 
-class Tetris : public QMainWindow
-{
+class Tetris : public QMainWindow {
 	Q_OBJECT
 
 public:
