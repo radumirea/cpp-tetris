@@ -1,10 +1,6 @@
-# Cpp-Tetris
+# Demo
 
-Just my try at a tetris clone made in C++
-
-Made in Visual Studio 
-
-Uses Qt
+You can check a wasm compiled version [here](https://radumirea.com/projects/tetris).
 
 # Instructions
 press space to start or reset
